@@ -1,0 +1,88 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Nunito", sans-serif;
+}
+
+.login-page {
+    /* The image used */
+    background-image: url("../img/bg-login.svg");
+
+    /* Full height */
+    height: 100%;
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.container {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.wrapper {
+    display: flex;
+}
+
+.jumbotron {
+    width: 50%;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.form {
+    width: 50%;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.form .card {
+    border: none;
+}
+
+.card-body {
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.form-floating .form-control {
+    border-top: 1px;
+    border-left: 1px;
+    border-right: 1px;
+    border-radius: 0;
+    transition: ease-in-out 0.25s;
+}
+
+.form-control:focus {
+    border-color: rgb(0, 0, 0);
+    box-shadow: 0 1px 1px rgba(255, 255, 255, 1) inset,
+        0 0 8px rgba(255, 255, 255, 1);
+    transition: ease-in-out 0.2 5s;
+}
+
+.login {
+    font-weight: 500;
+    padding: 10px;
+    border-radius: 100px;
+}
+
+.bottom {
+    bottom: 0px;
+    position: absolute;
+    z-index: 99;
+}
+
+.captcha-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

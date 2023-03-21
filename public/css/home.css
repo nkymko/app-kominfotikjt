@@ -1,0 +1,18 @@
+/* .sidebar {
+    background: rgb(20, 66, 114);
+    background: linear-gradient(
+        180deg,
+        rgba(20, 66, 114, 1) 0%,
+        rgba(10, 38, 71, 1) 100%
+    );
+} */
+
+.text-sudin {
+    display: inline-block;
+    color: black;
+    font-family: "Lemon Milk", sans-serif;
+    font-size: 25px;
+    margin-right: 10px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+}

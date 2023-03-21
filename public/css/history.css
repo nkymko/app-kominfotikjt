@@ -1,0 +1,12 @@
+.import-form {
+    border-radius: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+}
+
+input[type="file"] {
+    cursor: pointer;
+}
