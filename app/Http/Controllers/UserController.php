@@ -51,4 +51,12 @@ class UserController extends Controller
 
         return redirect('/data-karyawan')->with('success', 'Karyawan berhasil ditambahkan!');
     }
+
+    public function destroy(Request $request) 
+    {
+        User::where('id', $request->user_id)->delete();
+        Profile::where('id', $request->profile_id)->delete();
+        
+        return redirect('/data-karyawan')->with('success', 'Akun berhasil dihapuskan!');
+    }
 }

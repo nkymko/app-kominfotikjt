@@ -49,7 +49,12 @@
                                 <td>{{ $member->phone !=null ? $member->phone : '-' }}</td>
                                 <td>Aktif</td>
                                 <td>
-                                    <button class="btn btn-sm btn-danger"><i class="fas fa-trash sm"></i></button>
+                                    <form action="/data-karyawan" method="post">
+                                      @csrf
+                                      <input type="hidden" name="user_id" value="{{ $member->user->id }}">
+                                      <input type="hidden" name="profile_id" value="{{ $member->id }}">
+                                      <button class="btn btn-sm btn-danger show_confirm" type="submit" data-toggle="tooltip" title="Delete"><i class="fas fa-trash sm"></i></button>
+                                    </form>
                                     <button class="btn btn-sm btn-warning"><i class="fas fa-edit sm"></i></button>
                                     <button class="btn btn-sm btn-info"><i class="fas fa-info sm"></i></button>
                                 </td>

@@ -34,6 +34,7 @@ Route::middleware(['auth'])->group(function () {
     Route::controller(UserController::class)->group(function () {
         Route::get('/data-karyawan', 'members');   
         Route::post('/data-karyawan', 'store');
+        Route::post('/data-karyawan', 'destroy');
     });
     
     Route::get('/data-sekbid', [DivisionController::class, 'index']);

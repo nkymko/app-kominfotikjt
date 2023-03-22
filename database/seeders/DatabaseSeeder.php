@@ -19,16 +19,16 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
 
-        Division::create([
-            'name' => 'Sistem Informasi Siber dan Sandi',
-            'member_sum' => 10,
-            'slug' => 'siss'
-        ]);
+        // Division::create([
+        //     'name' => 'Sistem Informasi Siber dan Sandi',
+        //     'member_sum' => 10,
+        //     'slug' => 'siss'
+        // ]);
 
-        Position::create([
-            'name' => 'STAFF',
-            'slug' => 'staff'
-        ]);
+        // Position::create([
+        //     'name' => 'STAFF',
+        //     'slug' => 'staff'
+        // ]);
 
 
         User::create([
