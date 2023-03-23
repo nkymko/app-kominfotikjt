@@ -38,8 +38,8 @@
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2 mt-1">
                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                Karyawan (Total)</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">47</div>
+                                Pegawai (Total)</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $sum_pegawai }}</div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-users fa-2x text-gray-300"></i>
@@ -57,7 +57,7 @@
                         <div class="col mr-2 mt-1">
                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                 Seksi Bidang</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">7</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $sum_divisi }}</div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-briefcase fa-2x text-gray-300"></i>

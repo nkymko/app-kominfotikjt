@@ -21,12 +21,33 @@ class DivisionController extends Controller
     {   
         $validated = $request->validate([
             'name' => 'required|min:3|max:50',
-            'lead' => 'required|numeric|max:24',
         ]);
 
-        Division::create($validated);
+        $raw = explode(' ', $validated['name']);
+        $validName = '';
+        $slug = '';
 
-        return redirect('/shift')->with('success', 'Shift Kerja berhasil ditambahkan!');
+        foreach ($raw as $row) {
+            $slug .= strtolower($row) . '-';
+
+            $validName .= ucfirst($row) . ' ';
+        }
+
+        Division::create([
+            'name' => substr($validName, 0, -1),
+            'user_id' => $request['lead'],
+            'slug' => substr($slug, 0, -1),
+        ]);
+
+        return redirect('/data-sekbid')->with('success', 'Seksi bidang berhasil ditambahkan!');
+
+    }
+
+    public function destroy(Request $request)
+    {
+        Division::where('id', $request->div_id)->delete();
+        
+        return redirect('/data-sekbid')->with('success', 'Seksi bidang berhasil dihapuskan!');
     }
 
 }

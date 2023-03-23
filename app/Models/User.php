@@ -39,7 +39,7 @@ class User extends Authenticatable
 
     public function lead()
     {
-        return $this->hasOne(Division::class, 'user_id', 'id');
+        return $this->hasOne(Division::class, 'lead', 'id');
     }
     /**
      * The attributes that should be hidden for serialization.

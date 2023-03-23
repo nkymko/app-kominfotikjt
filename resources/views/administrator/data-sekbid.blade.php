@@ -40,7 +40,11 @@
                             <td>{{ $divisi->lead !=null ? $divisi->lead : '-' }}</td>
                             <td>{{ $divisi->member_sum }}</td>
                             <td>
-                                <button class="btn btn-sm btn-info" style="width: 40px"><i class="fas fa-eye sm"></i></button>
+                                <form action="/data-sekbid/destroy" method="post">
+                                    @csrf
+                                    <input type="hidden" name="div_id" value="{{ $divisi->id }}">
+                                    <button class="btn btn-sm btn-danger show_confirm" type="submit" data-toggle="tooltip" title="Delete">DELETE</button>
+                                  </form>
                             </td>
                         </tr>
                         @endforeach
@@ -78,7 +82,7 @@
                             <div class="form-group col-md-6">
                                 <label for="inputLead">Pimpinan Sekbid</label>
                                 <select id="inputLead" name="lead" class="form-control @error('lead') is-invalid @enderror">
-                                    <option selected>None</option>
+                                    <option selected value="">None</option>
                                     {{-- @foreach ($position as $pos)
                                     <option value="{{ $pos->id }}">{{ $pos->name }}</option>
                                     @endforeach --}}

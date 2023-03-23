@@ -37,7 +37,11 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/data-pegawai/destroy', 'destroy');
     });
     
-    Route::get('/data-sekbid', [DivisionController::class, 'index']);
+    Route::controller(DivisionController::class)->group(function () {
+        Route::get('/data-sekbid', 'index');
+        Route::post('/data-sekbid', 'store');
+        Route::post('/data-sekbid/destroy', 'destroy');
+    });
     
     Route::controller(AbsenController::class)->group(function () {
         Route::get('/riwayat-absen', 'history');

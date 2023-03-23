@@ -16,9 +16,10 @@ return new class extends Migration
         Schema::create('divisions', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->foreignId('user_id')->nullable();
+            $table->foreignId('lead')->nullable()->unique();
             $table->integer('member_sum')->default(0);
             $table->string('slug')->unique();
+            $table->foreign('lead')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }
