@@ -14,8 +14,8 @@ class UserController extends Controller
 {
     public function members()
     {
-        return view('administrator.data-karyawan', [
-            "title" => "Data Karyawan",
+        return view('administrator.data-pegawai', [
+            "title" => "Data Pegawai",
             "style" => '',
             "profile" => Profile::get(),
             "division" => Division::all(),
@@ -30,8 +30,8 @@ class UserController extends Controller
             'email' => 'required|unique:users|email:dns',
             'alamat' => 'max:70',
             'phone-num' => 'numeric|nullable',
-            'jabatan' => 'required',
-            'divisi' => 'required'
+            'jabatan' => 'nullable',
+            'divisi' => 'nullable'
         ]);
 
         User::create([
@@ -49,7 +49,7 @@ class UserController extends Controller
             'join_at' => now()
         ]);
 
-        return redirect('/data-karyawan')->with('success', 'Karyawan berhasil ditambahkan!');
+        return redirect('/data-pegawai')->with('success', 'Akun pegawai berhasil ditambahkan!');
     }
 
     public function destroy(Request $request) 
@@ -57,6 +57,6 @@ class UserController extends Controller
         User::where('id', $request->user_id)->delete();
         Profile::where('id', $request->profile_id)->delete();
         
-        return redirect('/data-karyawan')->with('success', 'Akun berhasil dihapuskan!');
+        return redirect('/data-pegawai')->with('success', 'Akun berhasil dihapuskan!');
     }
 }

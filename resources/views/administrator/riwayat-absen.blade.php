@@ -1,8 +1,6 @@
 @extends('layouts.main')
 
 @section('container')
-    <!-- Page Heading -->
-    <h1 class="h3 mb-4 text-gray-800">Data Absensi</h1>
 
     @if (session()->has('success'))
     <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -17,7 +15,7 @@
     <div class="card shadow mb-4">
         <div class="card-header py-3">
             <div class="d-sm-flex align-items-center justify-content-between">
-                <h6 class="m-0 font-weight-bold text-primary">Riwayat Absen</h6>
+                <h6 class="m-0 font-weight-bold text-primary">Riwayat Absen Pegawai</h6>
                 <div class="justify-content-end">
                     <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" data-toggle="modal" data-target="#importData">Import Data</a>
                     <a type="button" class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm" data-toggle="dropdown" aria-expanded="false">

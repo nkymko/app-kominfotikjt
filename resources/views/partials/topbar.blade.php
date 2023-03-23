@@ -5,6 +5,14 @@
         <i class="fa fa-bars"></i>
     </button>
 
+    <!-- Topbar Search -->
+    <div
+    class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+        <div class="input-group">
+            <h1 class="h3 mb-0 text-gray-800">{{ $title }}</h1>
+        </div>
+    </div>
+
     <!-- Topbar Navbar -->
     <ul class="navbar-nav ml-auto">
 

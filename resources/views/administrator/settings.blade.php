@@ -1,8 +1,6 @@
 @extends('layouts.main')
 
 @section('container')
-    <!-- Page Heading -->
-    <h1 class="h3 mb-4 text-gray-800">Setelan</h1>
 
     @if (session()->has('success'))
     <div class="alert alert-success alert-dismissible fade show" role="alert">

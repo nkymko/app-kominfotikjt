@@ -1,14 +1,12 @@
 @extends('layouts.main')
 
 @section('container')
-    <!-- Page Heading -->
-    <h1 class="h3 mb-4 text-gray-800">Data Absensi</h1>
 
     <!-- Table Data Riwayat Absen -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
             <div class="d-sm-flex align-items-center justify-content-between">
-                <h6 class="m-0 font-weight-bold text-primary">Rekap Absen</h6>
+                <h6 class="m-0 font-weight-bold text-primary">Rekap Absen Pegawai</h6>
             </div>
         </div>
         <div class="card-body">

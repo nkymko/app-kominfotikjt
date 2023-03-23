@@ -1,9 +1,6 @@
 @extends('layouts.main')
 
 @section('container')
-    <!-- Page Heading -->
-    <h1 class="h3 mb-4 text-gray-800">Master Data</h1>
-
     
     {{-- Alert --}}
     @if (session()->has('success'))

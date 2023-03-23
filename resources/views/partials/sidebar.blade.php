@@ -21,7 +21,7 @@
     {{-- @if (auth()->user()->level=='admin') --}}
 
         <!-- Nav Item - Pages Collapse Menu -->
-        <li class="nav-item {{ ($title === "Data Karyawan" || $title === "Data Sekbid" ? 'active' : '') }}">
+        <li class="nav-item {{ ($title === "Data Pegawai" || $title === "Data Sekbid" ? 'active' : '') }}">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#nav-data"
                 aria-expanded="true" aria-controls="nav-data">
                 <i class="fas fa-fw fa-folder-open"></i>
@@ -30,7 +30,7 @@
             <div id="nav-data" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Master Data:</h6>
-                    <a class="collapse-item" href="/data-karyawan">Data Karyawan</a>
+                    <a class="collapse-item" href="/data-pegawai">Data Pegawai</a>
                     <a class="collapse-item" href="/data-sekbid">Data Sekbid</a>
                 </div>
             </div>
@@ -41,7 +41,7 @@
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#nav-absen"
             aria-expanded="true" aria-controls="nav-absen">
             <i class="fas fa-fw fa-calendar"></i>
-            <span>Absen Karyawan</span>
+            <span>Absen Pegawai</span>
         </a>
         <div id="nav-absen" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
