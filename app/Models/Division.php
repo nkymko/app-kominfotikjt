@@ -21,12 +21,21 @@ class Division extends Model
         'slug'
     ];
 
+    /**
+     * Eager Loading
+     *
+     * @var array<int, string>
+     */
+    protected $with = [
+        'user',
+    ];
+
     public function profile()
     {
         return $this->hasMany(Profile::class);
     }
 
-    public function lead()
+    public function user()
     {
         return $this->belongsTo(User::class, 'lead');
     }

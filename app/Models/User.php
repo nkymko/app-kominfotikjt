@@ -37,7 +37,7 @@ class User extends Authenticatable
     //     return $this->hasMany(Absen::class, 'user_uuid', 'uuid');
     // }
 
-    public function lead()
+    public function division()
     {
         return $this->hasOne(Division::class, 'lead', 'id');
     }

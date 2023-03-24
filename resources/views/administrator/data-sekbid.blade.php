@@ -37,7 +37,7 @@
                         @foreach ($data as $divisi)
                         <tr>
                             <td>{{ $divisi->name }}</td>
-                            <td>{{ $divisi->lead !=null ? $divisi->lead : '-' }}</td>
+                            <td>{{ $divisi->lead !=null ? $divisi->user->name : '-' }}</td>
                             <td>{{ $divisi->member_sum }}</td>
                             <td>
                                 <form action="/data-sekbid/destroy" method="post">
@@ -83,9 +83,9 @@
                                 <label for="inputLead">Pimpinan Sekbid</label>
                                 <select id="inputLead" name="lead" class="form-control @error('lead') is-invalid @enderror">
                                     <option selected value="">None</option>
-                                    {{-- @foreach ($position as $pos)
-                                    <option value="{{ $pos->id }}">{{ $pos->name }}</option>
-                                    @endforeach --}}
+                                    @foreach ($user as $option)
+                                    <option value="{{ $option->id }}">{{ $option->user->name }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>

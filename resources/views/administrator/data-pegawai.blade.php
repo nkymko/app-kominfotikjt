@@ -29,8 +29,8 @@
                                 <th>Nama</th>
                                 <th>Jabatan</th>
                                 <th>Seksi Bidang</th>
-                                <th>Alamat</th>
-                                <th>Hp</th>
+                                {{-- <th>Alamat</th>
+                                <th>Hp</th> --}}
                                 <th>Status</th>
                                 <th>Aksi</th>
                             </tr>
@@ -45,16 +45,17 @@
                                 <td>{{ $member->user->name }}</td>
                                 <td>{{ $member->position !=null ? $member->position->name : '-' }}</td>
                                 <td>{{ $member->division !=null ? $member->division->name : '-' }}</td>
-                                <td>{{ $member->address !=null ? $member->address : '-' }}</td>
-                                <td>{{ $member->phone !=null ? $member->phone : '-' }}</td>
+                                {{-- <td>{{ $member->address !=null ? $member->address : '-' }}</td>
+                                <td>{{ $member->phone !=null ? $member->phone : '-' }}</td> --}}
                                 <td>Aktif</td>
-                                <td>
+                                <td class="button-grp">
                                     <form action="/data-pegawai/destroy" method="post">
                                       @csrf
                                       <input type="hidden" name="user_id" value="{{ $member->user->id }}">
                                       <input type="hidden" name="profile_id" value="{{ $member->id }}">
                                       <button class="btn btn-sm btn-danger show_confirm" type="submit" data-toggle="tooltip" title="Delete">DELETE</button>
                                     </form>
+                                    <button class="btn btn-sm btn-info" type="submit">VIEW</button>
                                 </td>
                             </tr>
                             @php

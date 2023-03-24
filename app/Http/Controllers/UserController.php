@@ -16,7 +16,7 @@ class UserController extends Controller
     {
         return view('administrator.data-pegawai', [
             "title" => "Data Pegawai",
-            "style" => '',
+            "style" => 'members',
             "profile" => Profile::get(),
             "division" => Division::all(),
             "position" => Position::all()
