@@ -127,7 +127,9 @@
                             <select id="inputState" name="jabatan" class="form-control @error('jabatan') is-invalid @enderror">
                                 <option selected value="">None</option>
                                 @foreach ($position as $pos)
-                                  <option value="{{ $pos->id }}">{{ $pos->name }}</option>
+                                  @if (strpos($pos->name, 'Pimpinan') === false)
+                                    <option value="{{ $pos->id }}">{{ $pos->name }}</option>
+                                  @endif
                                 @endforeach
                             </select>
                           </div>

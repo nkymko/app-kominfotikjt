@@ -39,12 +39,13 @@
                             <td>{{ $divisi->name }}</td>
                             <td>{{ $divisi->lead !=null ? $divisi->user->name : '-' }}</td>
                             <td>{{ $divisi->member_sum }}</td>
-                            <td>
+                            <td class="button-grp">
                                 <form action="/data-sekbid/destroy" method="post">
                                     @csrf
                                     <input type="hidden" name="div_id" value="{{ $divisi->id }}">
                                     <button class="btn btn-sm btn-danger show_confirm" type="submit" data-toggle="tooltip" title="Delete">DELETE</button>
-                                  </form>
+                                </form>
+                                <button class="btn btn-sm btn-warning">EDIT</button>
                             </td>
                         </tr>
                         @endforeach

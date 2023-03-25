@@ -21,7 +21,7 @@ class DivisionController extends Controller
 
         return view('administrator.data-sekbid', [
             'title' => 'Data Sekbid',
-            'style' => '',
+            'style' => 'members',
             'data' => $data,
             'user' => Profile::all(),
         ]);
@@ -63,10 +63,11 @@ class DivisionController extends Controller
                 'slug' => 'lead-' . strtolower($shortSlug),
             ]);
 
-            $getPosition = Position::where('name', $setPosition)->first();
-            $idPost = $getPosition['id'];
+            $getPosition = Position::where('name', $setPosition)->first()->id;
+            $getDivid = Division::where('name', substr($validName, 0, -1))->first()->id;
 
-            Profile::where('id', $request->lead)->update(['position_id' => $idPost]);
+
+            Profile::where('id', $request->lead)->update(['position_id' => $getPosition, 'division_id' => $getDivid ]);
         }
 
         return redirect('/data-sekbid')->with('success', 'Seksi bidang berhasil ditambahkan!');
@@ -75,6 +76,10 @@ class DivisionController extends Controller
 
     public function destroy(Request $request)
     {
+        $getLead = Division::where('id', $request->div_id)->first()->lead;
+        $delPos = Profile::where('id', $getLead)->first()->position_id;
+
+        Position::where('id', $delPos)->delete();
         Division::where('id', $request->div_id)->delete();
         Profile::where('division_id', $request->div_id)->update(['division_id' => null]);
         
