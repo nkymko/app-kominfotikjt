@@ -21,7 +21,7 @@
     {{-- @if (auth()->user()->level=='admin') --}}
 
         <!-- Nav Item - Pages Collapse Menu -->
-        <li class="nav-item {{ ($title === "Data Pegawai" || $title === "Data Sekbid" ? 'active' : '') }}">
+        <li class="nav-item {{ ($title === "Data Pegawai" || "Data Sekbid" || "Data Jabatan" ? 'active' : '') }}">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#nav-data"
                 aria-expanded="true" aria-controls="nav-data">
                 <i class="fas fa-fw fa-folder-open"></i>
@@ -38,7 +38,7 @@
         </li>
 
     {{-- Nav Item - Absen Karyawan --}}
-    <li class="nav-item {{ ($title === "Riwayat Absen" || $title === "Rekap Absen" ? 'active' : '') }}">
+    <li class="nav-item {{ ($title === "Riwayat Absen" || "Rekap Absen" ? 'active' : '') }}">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#nav-absen"
             aria-expanded="true" aria-controls="nav-absen">
             <i class="fas fa-fw fa-calendar"></i>

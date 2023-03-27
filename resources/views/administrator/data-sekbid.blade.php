@@ -100,49 +100,4 @@
     </div>
     {{-- Modal Box - End --}}
 
-    {{-- Modal Box - Add Sekbid --}}
-    <div class="modal fade" id="editSekbid" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-lg modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Sunting Data Sekbid</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form action="{{ route('sekbid.edit') }}" method="post">
-                        @csrf
-                        <div class="form-group">
-                            <label for="inputNama">Nama Sekbid</label>
-                            <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" id="inputNama" autocomplete="off" required value="{{ old('name') }}">
-                            @error('name')
-                              <div class="invalid-feedback">
-                                {{ $message }}
-                              </div>
-                            @enderror
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-6">
-                                <label for="inputLead">Pimpinan Sekbid</label>
-                                <select id="inputLead" name="lead" class="form-control @error('lead') is-invalid @enderror">
-                                    <option selected value="">None</option>
-                                    @foreach ($user as $option)
-                                    <option value="{{ $option->id }}">{{ $option->user->name }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div>
-                </div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                </form>
-                </div>
-            </div>
-        </div>
-    </div>
-    {{-- Modal Box - End --}}
-
 @endsection

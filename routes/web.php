@@ -1,13 +1,14 @@
 <?php
 
-use App\Http\Controllers\AbsenController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\AbsenController;
 use App\Http\Controllers\LoginController;
-use App\Http\Controllers\DivisionController;
-use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\SettingController;
+use App\Http\Controllers\DivisionController;
+use App\Http\Controllers\PositionController;
+use App\Http\Controllers\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,6 +47,8 @@ Route::middleware(['auth'])->group(function () {
 
     Route::controller(PositionController::class)->group(function () {
         Route::get('/data-jabatan', 'index');
+        Route::post('position-store', 'store')->name('position.store');
+        Route::post('position-destroy', 'destroy')->name('position.destroy');
     });
     
     Route::controller(AbsenController::class)->group(function () {

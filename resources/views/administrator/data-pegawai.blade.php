@@ -103,24 +103,6 @@
                             @enderror
                           </div>
                         </div>
-                        <div class="form-group">
-                          <label for="inputAddress">Alamat</label>
-                          <input type="text" name="alamat" class="form-control @error('alamat') is-invalid @enderror" id="inputAddress" placeholder="(optional)" autocomplete="off" value="{{ old('alamat') }}">
-                          @error('alamat')
-                              <div class="invalid-feedback">
-                                {{ $message }}
-                              </div>
-                            @enderror
-                        </div>
-                        <div class="form-group">
-                          <label for="inputAddress2">Handphone</label>
-                          <input type="tel" name="phone-num" class="form-control @error('phone-num') is-invalid @enderror" id="inputAddress2" placeholder="(optional)" autocomplete="off" value="{{ old('phone-num') }}">
-                          @error('phone-num')
-                            <div class="invalid-feedback">
-                              {{ $message }}
-                            </div>
-                          @enderror 
-                        </div>
                         <div class="form-row">
                           <div class="form-group col-md-6">
                             <label for="inputCity">Jabatan</label>

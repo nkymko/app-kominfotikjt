@@ -28,8 +28,6 @@ class UserController extends Controller
         $validated = $request->validate([
             'name' => 'required|min:3|max:50',
             'email' => 'required|unique:users|email:dns',
-            'alamat' => 'max:70',
-            'phone-num' => 'numeric|nullable',
             'jabatan' => 'nullable',
             'divisi' => 'nullable'
         ]);
@@ -44,8 +42,6 @@ class UserController extends Controller
             'user_id' => User::where('name', $validated['name'])->first(['id'])->id,
             'position_id' => $validated['jabatan'],
             'division_id' => $validated['divisi'],
-            'address' => $validated['alamat'],
-            'phone' => $validated['phone-num'],
             'join_at' => now()
         ]);
 
