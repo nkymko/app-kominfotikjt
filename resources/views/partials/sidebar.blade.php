@@ -32,6 +32,7 @@
                     <h6 class="collapse-header">Master Data:</h6>
                     <a class="collapse-item" href="/data-pegawai">Data Pegawai</a>
                     <a class="collapse-item" href="/data-sekbid">Data Sekbid</a>
+                    <a class="collapse-item" href="/data-jabatan">Data Jabatan</a>
                 </div>
             </div>
         </li>

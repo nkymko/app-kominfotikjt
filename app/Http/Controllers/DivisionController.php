@@ -86,4 +86,10 @@ class DivisionController extends Controller
         return redirect('/data-sekbid')->with('success', 'Seksi bidang berhasil dihapuskan!');
     }
 
+    public function edit(Request $request)
+    {
+        
+
+    }
+
 }

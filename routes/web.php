@@ -39,8 +39,13 @@ Route::middleware(['auth'])->group(function () {
     
     Route::controller(DivisionController::class)->group(function () {
         Route::get('/data-sekbid', 'index');
-        Route::post('/data-sekbid', 'store');
-        Route::post('/data-sekbid/destroy', 'destroy');
+        Route::post('sekbid-store', 'store')->name('sekbid.store');
+        Route::post('sekbid-destroy', 'destroy')->name('sekbid.destroy');
+        Route::post('/data-sekbid/{slug}', 'edit')->name('sekbid.edit');
+    });
+
+    Route::controller(PositionController::class)->group(function () {
+        Route::get('/data-jabatan', 'index');
     });
     
     Route::controller(AbsenController::class)->group(function () {
