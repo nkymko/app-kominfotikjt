@@ -14,24 +14,37 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th>ID</th>
+                            <th>No</th>
                             <th>Nama</th>
-                            <th>Bulan/Tahun</th>
+                            <th>Tahun</th>
                             <th>Total Jam Kerja</th>
                             <th>Total Hadir</th>
-                            <th>Sakit/Izin</th> 
-                            <th>Status</th>
+                            <th>Sakit/Izin</th>
+                            <th>Telat</th> 
+                            <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {{-- <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td>
-                                <button class="btn btn-sm btn-info" style="width: 40px"><i class="fas fa-eye sm"></i></button>
-                            </td>
-                        </tr> --}}
+                        @php
+                            $i = 1;
+                        @endphp
+                        @foreach ($data as $users)
+                            <tr>
+                                <td>{{ $i }}</td>
+                                <td>{{ $users->user->name }}</td>
+                                <td>{{ $month }}</td>
+                                <td>{{ $users->workHour }} jam</td>
+                                <td>{{ $users->total_hadir }}</td>
+                                <td></td>
+                                <td>{{ $users->telat }}</td>
+                                <td>
+                                    <a href="rekap-absen/{{ $users->user->username }}" class="btn btn-sm btn-info">VIEW</a>
+                                </td>
+                            </tr>
+                        @php
+                            $i ++;
+                        @endphp
+                        @endforeach
                     </tbody>
                 </table>
             </div>

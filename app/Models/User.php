@@ -42,6 +42,11 @@ class User extends Authenticatable
         return $this->hasOne(Profile::class, 'user_id', 'id');
     }
 
+    public function absen()
+    {
+        return $this->hasMany(Absen::class, 'name', 'name');
+    }
+
     // public function absen()
     // {
     //     return $this->hasMany(Absen::class, 'user_uuid', 'uuid');

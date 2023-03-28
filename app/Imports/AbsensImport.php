@@ -24,7 +24,7 @@ class AbsensImport implements ToModel, WithHeadingRow
             $clock_in = explode(':', $row['clock_in']);
             $time_in = ['hour' => intval($clock_in[0]), 'minute' => intval($clock_in[1])];
             // $row['clock_in'] = $time_in;
-            if ($time_in['hour'] < $shift->hour_in) {
+            if ($time_in['hour']     < $shift->hour_in) {
                 $status = "On Time";
             } elseif ($time_in['hour'] === $shift->hour_in) {
                 if ($time_in['minute'] <= $shift->minute_in ) {
