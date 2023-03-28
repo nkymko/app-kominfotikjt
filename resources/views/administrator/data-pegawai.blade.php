@@ -49,13 +49,13 @@
                                 <td>{{ $member->phone !=null ? $member->phone : '-' }}</td> --}}
                                 <td>Aktif</td>
                                 <td class="button-grp">
-                                    <form action="/data-pegawai/destroy" method="post">
+                                    <form action="{{ route('pegawai.destroy') }}" method="post">
                                       @csrf
                                       <input type="hidden" name="user_id" value="{{ $member->user->id }}">
                                       <input type="hidden" name="profile_id" value="{{ $member->id }}">
-                                      <button class="btn btn-sm btn-danger show_confirm" type="submit" data-toggle="tooltip" title="Delete">DELETE</button>
+                                      <button class="btn btn-sm btn-danger show_confirm" type="submit" onclick="return confirm('Hapus data?')">DELETE</button>
                                     </form>
-                                    <button class="btn btn-sm btn-info" type="submit">VIEW</button>
+                                    <a href="/profile/{{ $member->user->username }}" class="btn btn-sm btn-info" type="submit">VIEW</a>
                                 </td>
                             </tr>
                             @php
@@ -81,7 +81,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form action="/data-pegawai/store" method="post">
+                    <form action="{{ route('pegawai.store') }}" method="post">
                         @csrf
                         <div class="form-row">
                           <div class="form-group col-md-6">

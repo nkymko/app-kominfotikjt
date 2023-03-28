@@ -51,6 +51,7 @@ class PositionController extends Controller
     public function destroy(Request $request)
     {
         Position::where('id', $request->pos_id)->delete();
+        Profile::where('position_id', $request->pos_id)->update(['position_id' => null]);
         
         return redirect('/data-jabatan')->with('success', 'Seksi bidang berhasil dihapuskan!');
     }

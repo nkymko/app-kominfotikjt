@@ -46,11 +46,9 @@ class DivisionController extends Controller
             $validName .= ucfirst($row) . ' ';
         }
 
-        $lead = Profile::where('id', $request->lead)->get(['user_id']);
-
         Division::create([
             'name' => substr($validName, 0, -1),
-            'lead' => $lead->first()->user_id,
+            'lead' => $request->lead,
             'slug' => substr($slug, 0, -1),
             // 'slug' => $slug
         ]);

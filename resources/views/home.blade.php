@@ -74,7 +74,7 @@
     <div class="row">
 
         <!-- Pie Chart -->
-        <div class="col-xl-8 col-lg-5">
+        <div class="col-xl-6 col-lg-5">
             <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div
@@ -102,7 +102,7 @@
         </div>
 
         <!-- Pie Chart -->
-        <div class="col-xl-4 col-lg-5">
+        <div class="col-xl-6 col-lg-5">
             <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
@@ -114,7 +114,6 @@
                 </div>
             </div>
         </div>
-
     </div>
 
 @endsection

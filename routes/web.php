@@ -27,40 +27,41 @@ Route::controller(LoginController::class)->group(function () {
     Route::post('/logout', 'logout');
 });
 
-    
-Route::get('/', [DashboardController::class, 'index'])->middleware('auth');
-
-
 Route::middleware(['auth'])->group(function () {
+
+    Route::get('/', [DashboardController::class, 'index']);
+
     Route::controller(UserController::class)->group(function () {
-        Route::get('/data-pegawai', 'members');   
-        Route::post('/data-pegawai/store', 'store');
-        Route::post('/data-pegawai/destroy', 'destroy');
+        Route::get('data-pegawai', 'members');   
+        Route::post('pegawai-store', 'store')->name('pegawai.store');
+        Route::post('pegawai-destroy', 'destroy')->name('pegawai.destroy');
+        
+        Route::get('profile/{user:username}', 'show');
     });
     
     Route::controller(DivisionController::class)->group(function () {
-        Route::get('/data-sekbid', 'index');
+        Route::get('data-sekbid', 'index');
         Route::post('sekbid-store', 'store')->name('sekbid.store');
         Route::post('sekbid-destroy', 'destroy')->name('sekbid.destroy');
-        Route::post('/data-sekbid/{slug}', 'edit')->name('sekbid.edit');
+        Route::post('data-sekbid/{slug}', 'edit')->name('sekbid.edit');
     });
 
     Route::controller(PositionController::class)->group(function () {
-        Route::get('/data-jabatan', 'index');
+        Route::get('data-jabatan', 'index');
         Route::post('position-store', 'store')->name('position.store');
         Route::post('position-destroy', 'destroy')->name('position.destroy');
     });
     
     Route::controller(AbsenController::class)->group(function () {
-        Route::get('/riwayat-absen', 'history');
-        Route::get('/rekap-absen', 'recap');
-        Route::get('/riwayat-absen/export', 'export')->name('data.export');
-        Route::post('/riwayat-absen', 'import');
+        Route::get('riwayat-absen', 'history');
+        Route::get('rekap-absen', 'recap');
+        Route::get('riwayat-absen/export', 'export')->name('data.export');
+        Route::post('riwayat-absen', 'import');
     });
 
     Route::controller(SettingController::class)->group(function () {
-        Route::get('/settings', 'index');
-        Route::post('/settings/shift', 'store')->name('shift.setting');
+        Route::get('settings', 'index');
+        Route::post('settings/shift', 'store')->name('shift.setting');
     });
 });
     

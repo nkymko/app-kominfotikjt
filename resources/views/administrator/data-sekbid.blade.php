@@ -43,7 +43,7 @@
                                 <form action="{{ route('sekbid.destroy') }}" method="post">
                                     @csrf
                                     <input type="hidden" name="div_id" value="{{ $divisi->id }}">
-                                    <button class="btn btn-sm btn-danger show_confirm" type="submit" data-toggle="tooltip" title="Delete">DELETE</button>
+                                    <button class="btn btn-sm btn-danger show_confirm" type="submit" onclick="return confirm('Hapus data?')">DELETE</button>
                                 </form>
                             </td>
                         </tr>

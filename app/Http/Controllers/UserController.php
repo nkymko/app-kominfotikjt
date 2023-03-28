@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\User;
 use App\Models\Profile;
 use App\Models\Division;
@@ -23,6 +24,19 @@ class UserController extends Controller
         ]);
     }
 
+    public function show(User $user)
+    {
+        $detail = Profile::find($user->profile->id);
+        $detail->join_at = Carbon::parse($detail->join_at)->format('d/m/Y');
+
+        return view('profile.index', [
+            'title' => 'Profile',
+            'style' => '',
+            'data' => $user,
+            'detail' => $detail,
+        ]);
+    }
+
     public function store(Request $request)
     {  
         $validated = $request->validate([
@@ -32,7 +46,15 @@ class UserController extends Controller
             'divisi' => 'nullable'
         ]);
 
+        $raw = explode(' ', $validated['name']);
+        $validated['username'] = '';
+
+        foreach ($raw as $row) {
+            $validated['username'] .= strtolower($row);
+        }
+        
         User::create([
+            'username' => $validated['username'],
             'name' => $validated['name'],
             'email' => $validated['email'],
             'password' => Hash::make($validated['email']),

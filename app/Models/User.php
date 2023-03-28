@@ -20,12 +20,22 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
+        'username',
         'profile_id',
         'name',
         'email',
         'password', 
         'role'
     ];
+
+    // /**
+    //  * Eager Loading
+    //  *
+    //  * @var array<int, string>
+    //  */
+    // protected $with = [
+    //     'profile', 
+    // ];
 
     public function profile()
     {
