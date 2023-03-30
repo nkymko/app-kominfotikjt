@@ -8,6 +8,7 @@ use App\Models\Shift;
 use App\Models\Profile;
 use App\Models\Division;
 use App\Models\Position;
+use App\Models\MonthlyRecap;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -44,6 +45,55 @@ class DatabaseSeeder extends Seeder
             'name' => 'admin',
             'email' => 'admin@gmail.com',
             'password' => bcrypt('admin@gmail.com'),
+        ]);
+
+        MonthlyRecap::create([
+            'month' => 'Januari',
+            'num' => '01'
+        ]);
+        MonthlyRecap::create([
+            'month' => 'Februari',
+            'num' => '02'
+        ]);
+        MonthlyRecap::create([
+            'month' => 'Maret',
+            'num' => '03'
+        ]);
+        MonthlyRecap::create([
+            'month' => 'April',
+            'num' => '04'
+        ]);
+        MonthlyRecap::create([
+            'month' => 'Mei',
+            'num' => '05'
+        ]);
+        MonthlyRecap::create([
+            'month' => 'Juni',
+            'num' => '06'
+        ]);
+        MonthlyRecap::create([
+            'month' => 'Juli',
+            'num' => '07'
+        ]);
+        MonthlyRecap::create([
+            'month' => 'Agustus',
+            'num' => '08'
+        ]);
+        MonthlyRecap::create([
+            'month' => 'September',
+            'num' => '09'
+        ]);
+        MonthlyRecap::create([
+            'month' => 'Oktober',
+            'num' => '10'
+        ]);
+        MonthlyRecap::create([
+            'month' => 'November',
+            'num' => '11'
+        ]);
+        MonthlyRecap::create([
+            'month' => 'Desember',
+            'num' => '12'
         ]);
     }
 }

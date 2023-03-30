@@ -59,7 +59,8 @@ Route::middleware(['auth'])->group(function () {
         Route::post('riwayat-absen', 'import');
         Route::post('rekap-refresh', 'refresh')->name('absen.refresh');
 
-        Route::get('rekap-absen/{user:username}', 'show');
+        Route::get('rekap-absen/{user:username}', 'show')->name('rekap.show');
+        Route::post('rekap-exportpdf', 'generatePDF')->name('rekap.pdf');
     });
 
     Route::controller(SettingController::class)->group(function () {

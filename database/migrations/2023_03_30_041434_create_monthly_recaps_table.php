@@ -13,14 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('recaps', function (Blueprint $table) {
+        Schema::create('monthly_recaps', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->unique();
             $table->string('month');
-            $table->integer('presence');
-            $table->integer('absence');
-            $table->integer('late');
-            $table->integer('workHour');
+            $table->string('num');
             $table->timestamps();
         });
     }
@@ -32,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('recaps');
+        Schema::dropIfExists('monthly_recaps');
     }
 };
