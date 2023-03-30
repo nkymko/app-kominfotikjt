@@ -27,29 +27,36 @@ Route::controller(LoginController::class)->group(function () {
     Route::post('/logout', 'logout');
 });
 
-Route::middleware(['auth'])->group(function () {
 
-    Route::get('/', [DashboardController::class, 'index']);
+Route::middleware(['auth'])->group(function () {
+    Route::get('/', [DashboardController::class, 'admin']);
+
+    Route::get('profile/{user:username}', [UserController::class, 'show']); // user true
+
+    Route::get('rekap-absen/{user:username}', [AbsenController::class ,'show'])->name('rekap.show'); // user true
+    Route::post('rekap-exportpdf', [AbsenController::class ,'generatePDF'])->name('rekap.pdf');
+    Route::post('rekap-exportxlsx', [AbsenController::class ,'recapexport'])->name('rekap.excel');
+});
+
+Route::middleware(['admin'])->group(function () {
 
     Route::controller(UserController::class)->group(function () {
         Route::get('data-pegawai', 'members');   
         Route::post('pegawai-store', 'store')->name('pegawai.store');
         Route::post('pegawai-destroy', 'destroy')->name('pegawai.destroy');
-        
-        Route::get('profile/{user:username}', 'show');
     });
     
     Route::controller(DivisionController::class)->group(function () {
         Route::get('data-sekbid', 'index');
         Route::post('sekbid-store', 'store')->name('sekbid.store');
         Route::post('sekbid-destroy', 'destroy')->name('sekbid.destroy');
-        Route::post('data-sekbid/{slug}', 'edit')->name('sekbid.edit');
+        Route::post('data-sekbid/{slug}', 'edit')->name('sekbid.edit'); // all not true
     });
 
     Route::controller(PositionController::class)->group(function () {
         Route::get('data-jabatan', 'index');
         Route::post('position-store', 'store')->name('position.store');
-        Route::post('position-destroy', 'destroy')->name('position.destroy');
+        Route::post('position-destroy', 'destroy')->name('position.destroy'); // all not true
     });
     
     Route::controller(AbsenController::class)->group(function () {
@@ -58,9 +65,6 @@ Route::middleware(['auth'])->group(function () {
         Route::get('riwayat-absen/export', 'export')->name('data.export');
         Route::post('riwayat-absen', 'import');
         Route::post('rekap-refresh', 'refresh')->name('absen.refresh');
-
-        Route::get('rekap-absen/{user:username}', 'show')->name('rekap.show');
-        Route::post('rekap-exportpdf', 'generatePDF')->name('rekap.pdf');
     });
 
     Route::controller(SettingController::class)->group(function () {

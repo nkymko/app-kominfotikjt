@@ -15,7 +15,7 @@ class PositionController extends Controller
             $filtered['member_sum'] = Profile::where('position_id', $filtered->id)->count();
         }
 
-        return view('administrator.data-jabatan', [
+        return view('administrator.members.positions', [
             'title' => 'Data Jabatan',
             'style' => '',
             'data' => $data,

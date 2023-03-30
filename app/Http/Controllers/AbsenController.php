@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Carbon\Carbon;
 use App\Models\User;
 use App\Models\Absen;
-use App\Models\Recap;
 use App\Models\Shift;
 use App\Models\Profile;
 use App\Models\MonthlyRecap;
@@ -21,7 +20,7 @@ class AbsenController extends Controller
     public function history()
     {
 
-       return view('administrator.riwayat-absen', [
+       return view('administrator.presence.history', [
             'title' => 'Riwayat Absen',
             'style' => 'history',
             'data' => Absen::all(),
@@ -47,47 +46,17 @@ class AbsenController extends Controller
 
     public function recap()
     {
-        return view('administrator.rekap-absen', [
+        $data = Profile::all();
+
+        foreach ($data as $profile) {
+            session()->put($profile->user->name, 'false');
+        }
+
+        return view('administrator.presence.recap', [
             'title' => 'Rekap Absen',
             'style' => null,
             'data' => Profile::all(),
         ]);
-    }
-
-    public function refresh(Request $request)
-    {
-        $user = User::find($request->user_id);
-        $absen = Absen::where('name', $user->name)->get();
-        $request['presence'] = $absen->count();
-        $request['late'] = Absen::where([
-            'name' => $user->name,
-            'status' => 'telat'
-        ])->count();
-        $request['workHour'] = 0;
-        $request['absence'] = 0;
-
-        foreach ($absen as $count) {
-            if ($count['clock_in'] !== '-' && $count['clock_out'] !== '-') {
-                $rawIn = explode(':', $count['clock_in']);
-                $rawOut = explode(':', $count['clock_out']);
-    
-                $request['workHour'] +=  + intval($rawOut[0]) - intval($rawIn[0]);
-            }
-        }
-
-        $getYear = Absen::where('name', $user->name)->latest('created_at')->first();
-        $setYear = explode('/', $getYear['date']);
-        $request['year'] = $setYear[2];
-        Recap::create([
-            'user_id' => $request->user_id,
-            'year' => $request->year,
-            'workHour' => $request->workHour,
-            'presence' => $request->presence,
-            'absence' => $request->absence,
-            'late' => $request->late
-        ]);
-
-        return redirect('/rekap-absen')->with('success', 'Data berhasil dipulihkan!');
     }
 
     public function show(User $user)
@@ -128,7 +97,10 @@ class AbsenController extends Controller
     */
     public function recapexport(Request $request) 
     {
-        
+
+        session()->put('export', $request->username);
+
+        return Excel::download(new RecapExport, 'rekap_' . $request->username . '_' . uniqid() . '.xlsx');
     }
 
     /**
@@ -167,12 +139,12 @@ class AbsenController extends Controller
         
         $pdf = PDF::loadView('pdf-report.recap', [
             'title' => 'Rekap Absen',
-            'style' => '',
+            'style' => 'pdf',
             'user' => $user,
             'detail' => $detail,
             'data' => $data
-        ]);
+        ])->setOptions(['defaultFont' => 'sans-serif']);
 
-        return $pdf->download('Rekap Absen.pdf');
+        return $pdf->download('rekap_'. $user->username . '_' . uniqid() .'.pdf');
     }
 }

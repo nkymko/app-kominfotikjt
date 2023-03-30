@@ -15,7 +15,7 @@ class UserController extends Controller
 {
     public function members()
     {
-        return view('administrator.data-pegawai', [
+        return view('administrator.members.index', [
             "title" => "Data Pegawai",
             "style" => 'members',
             "profile" => Profile::get(),
@@ -26,6 +26,10 @@ class UserController extends Controller
 
     public function show(User $user)
     {
+        if($user->name === 'admin'){
+            return redirect('/');
+        }
+        
         $detail = Profile::find($user->profile->id);
         $detail->join_at = Carbon::parse($detail->join_at)->format('d/m/Y');
 

@@ -9,7 +9,7 @@ class SettingController extends Controller
 {
     public function index()
     {
-        return view('administrator.settings', [
+        return view('administrator.settings.index', [
             'title' => 'Settings',
             'style' => 'settings',
             // 'data' => Shift::all(),

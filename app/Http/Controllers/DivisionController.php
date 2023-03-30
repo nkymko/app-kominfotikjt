@@ -19,7 +19,7 @@ class DivisionController extends Controller
             $filtered['member_sum'] = Profile::where('division_id', $filtered->id)->count();
         }
 
-        return view('administrator.data-sekbid', [
+        return view('administrator.members.divisions', [
             'title' => 'Data Sekbid',
             'style' => 'members',
             'data' => $data,

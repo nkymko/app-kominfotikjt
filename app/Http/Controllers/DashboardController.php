@@ -12,6 +12,14 @@ class DashboardController extends Controller
     public function index()
     {
         return view('home', [
+            'title' => 'Home',
+            'style' => 'home'
+        ]);
+    }
+
+    public function admin()
+    {
+        return view('administrator.dashboard.index', [
             "title" => "Dashboard",
             "style" => "home",
             'sum_pegawai' => Profile::count(),

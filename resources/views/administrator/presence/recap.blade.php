@@ -40,14 +40,6 @@
                                 <td width="10%">
                                     <div class="action" style="display: flex; gap: 0.2rem;">
                                         <a href="rekap-absen/{{ $users->user->username }}" class="btn btn-sm btn-info">VIEW</a>
-                                        <form action="{{ route('absen.refresh') }}" method="post">
-                                            @csrf
-                                            <input type="hidden" name="user_id" value="{{ $users->user_id }}">
-                                            <button type="submit" class="d-none d-sm-inline-block btn btn-sm btn-success" 
-                                            onclick="return confirm('Refresh data absen?')">
-                                                REFRESH
-                                            </button>
-                                        </form>
                                     </div>
                                 </td>
                             </tr>
