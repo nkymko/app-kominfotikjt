@@ -27,6 +27,16 @@ class AbsenController extends Controller
        ]);
     }
 
+    public function userhistory(User $user)
+    {
+
+       return view('administrator.presence.history', [
+            'title' => 'Riwayat Absen',
+            'style' => 'history',
+            'data' => Absen::where('name', $user->name)->get(),
+       ]);
+    }
+
     /**
     * @return \Illuminate\Support\Collection
     */

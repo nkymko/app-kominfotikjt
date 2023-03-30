@@ -16,6 +16,7 @@
         <div class="card-header py-3">
             <div class="d-sm-flex align-items-center justify-content-between">
                 <h6 class="m-0 font-weight-bold text-primary">Riwayat Absen Pegawai</h6>
+                @can('admin')
                 <div class="justify-content-end">
                     <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" data-toggle="modal" data-target="#importData">Import Data</a>
                     <a type="button" class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm" data-toggle="dropdown" aria-expanded="false">
@@ -26,10 +27,12 @@
                     <button class="dropdown-item" href="#">as PDF</button>
                     </div>
                 </div>
+                @endcan
             </div>
         </div>
         <div class="card-body">
 
+            @can('admin')
             <!-- Modal -->
             <div class="modal fade" id="importData" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered">
@@ -56,6 +59,7 @@
                 </div>
                 </div>
             </div>
+            @endcan
 
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">

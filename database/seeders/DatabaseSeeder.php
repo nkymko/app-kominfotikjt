@@ -43,8 +43,9 @@ class DatabaseSeeder extends Seeder
         User::create([
             'username' => 'admin',
             'name' => 'admin',
-            'email' => 'admin@gmail.com',
-            'password' => bcrypt('admin@gmail.com'),
+            'email' => 'admin@admin.com',
+            'password' => bcrypt('admin@admin.com'),
+            'is_admin' => true,
         ]);
 
         MonthlyRecap::create([

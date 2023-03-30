@@ -29,10 +29,11 @@ Route::controller(LoginController::class)->group(function () {
 
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/', [DashboardController::class, 'admin']);
+    Route::get('/', [DashboardController::class, 'index']);
 
     Route::get('profile/{user:username}', [UserController::class, 'show']); // user true
 
+    Route::get('riwayat-absen/{user:username}', [AbsenController::class ,'userhistory']);
     Route::get('rekap-absen/{user:username}', [AbsenController::class ,'show'])->name('rekap.show'); // user true
     Route::post('rekap-exportpdf', [AbsenController::class ,'generatePDF'])->name('rekap.pdf');
     Route::post('rekap-exportxlsx', [AbsenController::class ,'recapexport'])->name('rekap.excel');

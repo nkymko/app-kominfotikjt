@@ -12,8 +12,10 @@ class DashboardController extends Controller
     public function index()
     {
         return view('home', [
-            'title' => 'Home',
-            'style' => 'home'
+            'title' => 'Dashboard',
+            'style' => 'home',
+            'sum_pegawai' => Profile::count(),
+            'sum_divisi' => Division::count(),
         ]);
     }
 
