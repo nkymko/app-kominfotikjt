@@ -2,6 +2,15 @@
 
 @section('container')
 
+    @if (session()->has('success'))
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+    {{ session('success') }}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+    </div>
+    @endif
+
     <!-- Table Data Riwayat Absen -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
@@ -16,11 +25,6 @@
                         <tr>
                             <th>No</th>
                             <th>Nama</th>
-                            <th>Tahun</th>
-                            <th>Total Jam Kerja</th>
-                            <th>Total Hadir</th>
-                            <th>Sakit/Izin</th>
-                            <th>Telat</th> 
                             <th>Aksi</th>
                         </tr>
                     </thead>
@@ -28,17 +32,23 @@
                         @php
                             $i = 1;
                         @endphp
+                        {{-- @dd($data); --}}
                         @foreach ($data as $users)
                             <tr>
-                                <td>{{ $i }}</td>
+                                <td width="5%">{{ $i }}</td>
                                 <td>{{ $users->user->name }}</td>
-                                <td>{{ $month }}</td>
-                                <td>{{ $users->workHour }} jam</td>
-                                <td>{{ $users->total_hadir }}</td>
-                                <td></td>
-                                <td>{{ $users->telat }}</td>
-                                <td>
-                                    <a href="rekap-absen/{{ $users->user->username }}" class="btn btn-sm btn-info">VIEW</a>
+                                <td width="10%">
+                                    <div class="action" style="display: flex; gap: 0.2rem;">
+                                        <a href="rekap-absen/{{ $users->user->username }}" class="btn btn-sm btn-info">VIEW</a>
+                                        <form action="{{ route('absen.refresh') }}" method="post">
+                                            @csrf
+                                            <input type="hidden" name="user_id" value="{{ $users->user_id }}">
+                                            <button type="submit" class="d-none d-sm-inline-block btn btn-sm btn-success" 
+                                            onclick="return confirm('Refresh data absen?')">
+                                                REFRESH
+                                            </button>
+                                        </form>
+                                    </div>
                                 </td>
                             </tr>
                         @php

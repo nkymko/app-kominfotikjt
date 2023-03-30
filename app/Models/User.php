@@ -35,6 +35,8 @@ class User extends Authenticatable
     //  */
     // protected $with = [
     //     'profile', 
+    //     'absen',
+    //     'recap'
     // ];
 
     public function profile()
@@ -45,6 +47,11 @@ class User extends Authenticatable
     public function absen()
     {
         return $this->hasMany(Absen::class, 'name', 'name');
+    }
+
+    public function recap()
+    {
+        return $this->hasMany(Recap::class);
     }
 
     // public function absen()
